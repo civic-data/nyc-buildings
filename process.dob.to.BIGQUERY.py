@@ -49,12 +49,19 @@ for line in reader:
                     row.append('')
                 else:
                     try:
-                        #date = datetime.strptime(line[key],'%m/%d/%Y %I:%M:%S %p')
-                        date = datetime.strptime(line[key],'%Y-%m-%d')
-                        row.append(datetime.strftime(date,'%Y-%m-%dT%H:%M:%S-05:00'))
+                      # 06/05/2013 12:00:00 AM
+                      #date = datetime.strptime(line[key],'%m/%d/%Y ')
+                      date = datetime.strptime(line[key],'%m/%d/%Y %I:%M:%S %p')
+                      row.append(datetime.strftime(date,'%Y-%m-%dT%H:%M:%S-05:00'))
                     except Exception,e:
-                        #print 'issue1:',e, key, line[key]
-                        row.append('')
+                      #date = datetime.strptime(line[key],'%m/%d/%Y %I:%M:%S %p')
+                      #date = datetime.strptime(line[key],'%Y-%m-%d')
+                      try: 
+                          date = datetime.strptime(line[key],'%m/%d/%Y')
+                          row.append(datetime.strftime(date,'%Y-%m-%dT%H:%M:%S-05:00'))
+                      except Exception,e:
+                          print 'issue1:',e, key, line[key]
+                          row.append('')
             elif typedict[key]=='integer':
                     row.append(int(float(line[key])))
                     pass
