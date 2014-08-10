@@ -76,9 +76,10 @@ for line in reader:
         except Exception,e:
             try:
                 #sys.stderr.write( 'BIG ISSUE:%s\n'% e)
-                sys.stderr.write( 'BIG ISSUE:%s:%s>>>%s<<< %s\n'% (typedict[key],key,line[key], line))
+                sys.stderr.write( '\nBIG ISSUE:%s:%s:%s>>>%s<<< %s\n'% (e,typedict[key],key,line[key], line))
             except Exception,e:
-                #sys.stderr.write( 'REALLY BIG ISSUE:%s:%s\n'% (key,line))
+                sys.stderr.write( '\nREALLY BIG ISSUE:%s\n'% (e))
+                sys.stderr.write( '\nREALLY BIG ISSUE:%s:%s:%s\n'% (e,key,line))
                 pass
 
 
